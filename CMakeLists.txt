@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.1)
+cmake_minimum_required( VERSION 3.15)
 
 project( mulle-markdown C)
 
@@ -42,9 +42,7 @@ elseif( "${MULLE_PROJECT_TYPE}" STREQUAL "Framework")
    include( Dependencies)
    include( Framework)
 
-   set_target_properties( "${FRAMEWORK_NAME}" PROPERTIES
-     FRAMEWORK_VERSION A
-   )
+
 
    #
    # You usually don't want to link static libraries into a Framework, except
