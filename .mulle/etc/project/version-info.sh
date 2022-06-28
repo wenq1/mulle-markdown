@@ -1,0 +1,1 @@
+VERSIONFILE="src/mulle-markdown-version.h"

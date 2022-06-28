@@ -47,6 +47,11 @@ emits
 > chain it with mulle-tidy for nicer output.
 
 
+### You are here
+
+![Overview](overview.dot.svg)
+
+
 ## Build
 
 This is a [mulle-sde](https://mulle-sde.github.io/) project.
