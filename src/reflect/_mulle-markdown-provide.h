@@ -10,4 +10,3 @@
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
 #include "mulle-markdown-version.h"
-#include "mulle_markdown-version.h"

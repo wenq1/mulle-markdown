@@ -55,7 +55,6 @@ src/generic/include.h
 #
 set( PUBLIC_HEADERS
 src/mulle-markdown-version.h
-src/mulle_markdown-version.h
 src/reflect/_mulle-markdown-include-public.h
 )
 
