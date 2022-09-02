@@ -29,6 +29,12 @@ static char   footer[] = \
 "</html>\n";
 
 
+static char   default_css[] =
+#include "style.css.inc"
+;
+#define s_default_css  (sizeof( default_css) - 1)
+
+
 static void   usage( void)
 {
    fprintf( stderr, "" \
@@ -40,6 +46,7 @@ static void   usage( void)
 "Options:\n"
 "   -c         : emit link to \"style.css\" (implies -w)\n"
 "   -i         : inline \"style.css\" into HTML head (implies -w)\n"
+"   -m         : inline a hardcoded style.css (implies -w)\n"
 "   -t <title> : set title of HTML document (implies -w)\n"
 "   -w         : wrap with HTML header and footer\n"
 );
@@ -64,6 +71,7 @@ int  main( int argc, char *argv[])
       int   add_css;
       int   add_footer;
       int   inline_css;
+      int   default_css;
       char  *title;
    } config;
 
@@ -84,6 +92,14 @@ int  main( int argc, char *argv[])
             config.inline_css = YES;
             config.add_header = YES;
             config.add_footer = YES;
+            ++i;
+            continue;
+
+         case 'm' :
+            config.inline_css  = YES;
+            config.add_header  = YES;
+            config.add_footer  = YES;
+            config.default_css = YES;
             ++i;
             continue;
 
@@ -144,6 +160,8 @@ int  main( int argc, char *argv[])
       *p++ = c;
    }
 
+   // TODO: make more nicey, nicey by injecting style data into header
+   //       not just lazily prepending it
    markdownedData = [data hoedownedData];
 
    if( config.add_header)
@@ -155,10 +173,17 @@ int  main( int argc, char *argv[])
       {
          fprintf( stdout, "<style>\n");
 
-         fq = fopen( "style.css", "r");
-         while( (c = getc_unlocked( fq)) != EOF)
-            putc_unlocked( c, stdout);
-         fclose( fq);
+         if( config.default_css)
+         {
+            fwrite( default_css, s_default_css, 1, stdout);
+         }
+         else
+         {
+            fq = fopen( "style.css", "r");
+            while( (c = getc_unlocked( fq)) != EOF)
+               putc_unlocked( c, stdout);
+            fclose( fq);
+         }
 
          fprintf( stdout, "</style>\n");
       }
