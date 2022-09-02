@@ -17,7 +17,7 @@ static char   header1[] = \
 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n";
 
 static char   css[] = \
-"<link rel=\"stylesheet\" src=\"style.css\">\n";
+"<link rel=\"stylesheet\" href=\"style.css\">\n";
 
 static char   header2[] = \
 "<title>%s</title>\n"
