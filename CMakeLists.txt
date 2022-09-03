@@ -23,66 +23,20 @@ include( Environment)
 
 include( Files)
 
-if( "${MULLE_PROJECT_TYPE}" STREQUAL "Executable")
-
-   ### Executable
-
-   include( Dependencies)
-   include( Executable)
-   include( InstallExecutable)
-
-   # only for Executable
-   include( Motd OPTIONAL)
+set( SCRIPTS mulle-markdown-preview)
 
 
-elseif( "${MULLE_PROJECT_TYPE}" STREQUAL "Framework")
+### Executable
 
-   ### Framework
+include( Dependencies)
+include( Executable)
+include( InstallExecutable)
 
-   include( Dependencies)
-   include( Framework)
-
-
-
-   #
-   # You usually don't want to link static libraries into a Framework, except
-   # if you know they won't be shared with other frameworks. So use dynamic_lookup 
-   # to keep those symbols from static libraries "open" for later linking.
-   #
-   # Mark static libraries as no-link.
-   #
-   target_link_options( "${FRAMEWORK_NAME}" PRIVATE
-      -undefined dynamic_lookup
-   )
-   
-   include( InstallFramework)
-
-elseif( "${MULLE_PROJECT_TYPE}" STREQUAL "Library")
-
-   ### Library
-
-   if( HEADER_PHASE)
-      install( FILES ${INSTALL_PUBLIC_HEADERS}  DESTINATION "include/${PROJECT_NAME}")
-      install( FILES ${INSTALL_PRIVATE_HEADERS} DESTINATION "include/${PROJECT_NAME}/private")
-      install( FILES ${CMAKE_INCLUDES}          DESTINATION "include/${PROJECT_NAME}/cmake")
-
-      # short cut out
-      if( NOT COMPILE_PHASE AND NOT LINK_PHASE)
-         return()
-      endif()
-   endif()
-
-   if( LINK_PHASE)
-      include( Dependencies OPTIONAL)
-   endif()
-
-   include( Library)
-   include( InstallLibrary)
-
-else()
-
-   message( ERROR "Unknown project type \"${MULLE_PROJECT_TYPE}\"")
-
+if( LINK_PHASE)
+   install( FILES ${SCRIPTS} DESTINATION "bin")
 endif()
+
+# only for Executable
+include( Motd OPTIONAL)
 
 include( FinalOutput OPTIONAL)

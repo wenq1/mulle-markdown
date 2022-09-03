@@ -18,8 +18,11 @@ mulle-markdown -m < README.md > README.html
 open README.html        # xdg-open README.html (linux)
 ```
 
-`mulle-markdown` is a small showcase on how to compile mulle-objc with musl into a
-standalone static executable.
+> There is also a convenience script `mulle-markdown-preview`, which opens a
+> README.md file in the brower.
+
+`mulle-markdown` is a small showcase on how to compile mulle-objc with musl
+into a standalone static executable.
 
 
 ## Usage
