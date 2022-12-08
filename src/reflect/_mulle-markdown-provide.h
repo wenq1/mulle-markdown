@@ -9,4 +9,6 @@
  *
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
+#include "make-style.css.inc"
 #include "mulle-markdown-version.h"
+#include "style.css.inc"

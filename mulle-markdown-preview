@@ -33,25 +33,32 @@
 
 
 md="${1:-README.md}"
-html="`mktemp -p "" mulle-markdown-preview-XXXXXX.html`" || exit 1
+
+# file must be in local to find images
+html="`mktemp mulle-markdown-preview-XXXXXX.html`" || exit 1
 
 #
-# MEMO: xdg-open returns immediately, so we can't really remove the preview
-# file
+# MEMO: xdg-open returns immediately, so we can't immediately remove the
+# preview file
 #
 if mulle-markdown -m < "${md}" > "${html}"
 then
    case "`uname`" in
       *arwin*)
          open "${html}"
+         sleep 10
+         rm "${html}"
       ;;
 
       *inux*)
          xdg-open "${html}"
+         sleep 10
+         rm "${html}"
       ;;
 
       *)
-         echo "${html} is ready"
+         mv "${html}" .
+         echo "`basename -- "${html}"` is ready"
       ;;
    esac
 fi

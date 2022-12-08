@@ -54,7 +54,9 @@ src/generic/include.h
 # contents selected with patternfile ??-header--public-headers
 #
 set( PUBLIC_HEADERS
+src/make-style.css.inc
 src/mulle-markdown-version.h
 src/reflect/_mulle-markdown-include-public.h
+src/style.css.inc
 )
 
