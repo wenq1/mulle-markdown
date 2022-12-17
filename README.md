@@ -21,10 +21,6 @@ open README.html        # xdg-open README.html (linux)
 > There is also a convenience script `mulle-markdown-preview`, which opens a
 > README.md file in the brower.
 
-`mulle-markdown` is a small showcase on how to compile mulle-objc with musl
-into a standalone static executable.
-
-
 ## Usage
 
 ```console
@@ -64,6 +60,24 @@ emits
 > mulle-markdown does not pretty print the resulting HTML. You may want to
 > chain it with mulle-tidy for nicer output.
 
+
+## mulle-markdown as a musl or cosmopolitan static executable
+
+`mulle-markdown` is a small showcase on how to compile mulle-objc with
+[musl](//musl.libc.org) or [cosmopolitan](//justine.lol/cosmopolitan/index.html)
+into a standalone static/cross-platform executable. The craft for musl or
+cosmpolitan must be done on linux though.
+The C libraries are considered SDKs and can be selected with:
+
+``` sh
+mulle-sde env --os-linux set MULLE_CRAFT_SDKS "cosmopolitan:musl:default"
+```
+> #### SDK selection via sourcetree
+>
+> See `mulle-sourcetree list --output-format cmd` on how to add cosmopolitan or
+> musl added to a sourcetree. Pay attention to the `only-craft-sdk-<name>`
+> marks.
+>
 
 ### You are here
 
