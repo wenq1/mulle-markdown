@@ -8,7 +8,7 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "MulleWeb/mulle-markdown"
+      "url" : "github:MulleWeb/mulle-markdown"
    },
    "dependencies" : {
       "mulle-cosmopolitan" : "git://github.com/mulle-cc/mulle-cosmopolitan",
