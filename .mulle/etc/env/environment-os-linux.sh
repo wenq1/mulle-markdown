@@ -1,6 +1,6 @@
 #
 #
 #
-export MULLE_CRAFT_SDKS="cosmopolitan:musl:default"
+export MULLE_CRAFT_SDKS="Do musl:default"
 
 
