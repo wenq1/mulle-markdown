@@ -4,7 +4,7 @@
 /*
  *  version:  major, minor, patch
  */
-#define MULLE_MARKDOWN_VERSION  ((0 << 20) | (1 << 8) | 0)
+#define MULLE_MARKDOWN_VERSION  ((0 << 20) | (1 << 8) | 1)
 
 
 static inline unsigned int   mulle_markdown_get_version_major( void)
