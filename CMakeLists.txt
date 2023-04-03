@@ -34,7 +34,8 @@ include( Executable)
 target_compile_definitions( "${EXECUTABLE_COMPILE_TARGET}" PUBLIC)
 target_compile_options( "${EXECUTABLE_COMPILE_TARGET}" PUBLIC)
 # use LIBRARY_LINK_TARGET for linker options
-if( LINK_PHASE)
+
+if( LINK_PHASE AND NOT APPLE)
    target_link_options( "${EXECUTABLE_LINK_TARGET}" PUBLIC -fuse-ld=bfd)
 endif()
 
