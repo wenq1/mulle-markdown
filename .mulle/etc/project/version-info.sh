@@ -1,1 +1,1 @@
-VERSIONFILE="src/mulle-markdown-version.h"
+VERSIONFILE="src/mulle-testproto-version.h"

@@ -11,8 +11,8 @@
  *
  */
 
-#ifndef _mulle_markdown_include_h__
-#define _mulle_markdown_include_h__
+#ifndef _mulle_testproto_include_h__
+#define _mulle_testproto_include_h__
 
 /* no headers */
 

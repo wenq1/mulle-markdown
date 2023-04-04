@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.15)
 
-project( mulle-markdown C)
+project( mulle-testproto C)
 
 #
 # Turn an "Executable" into a "Library"
@@ -23,7 +23,7 @@ include( Environment)
 
 include( Files)
 
-set( SCRIPTS mulle-markdown-preview)
+set( SCRIPTS mulle-testproto-preview)
 
 
 ### Executable

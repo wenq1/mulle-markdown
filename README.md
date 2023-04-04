@@ -1,30 +1,30 @@
-# mulle-markdown
+# mulle-testproto
 
-#### 👯 mulle-markdown turns markdown into HTML
+#### 👯 mulle-testproto turns markdown into HTML
 
-**mulle-markdown** uses the [hoedown](//github.com/hoedown/hoedown)
+**mulle-testproto** uses the [hoedown](//github.com/hoedown/hoedown)
 library wrapped into [MulleHoedown](//github.com/MulleWeb/MulleHoedown) to
 convert [Markdown](//en.wikipedia.org/wiki/Markdown) into
 [HTML](https://en.wikipedia.org/wiki/HTML).
 
-You can get `mulle-markdown` to add a stylesheet to your HTML output. That
+You can get `mulle-testproto` to add a stylesheet to your HTML output. That
 makes it convenient for quick previewing of markdown files. This command
 sequence produces a nicely styled and readable HTML output file for consumption
 in a browser:
 
 
 ```console
-mulle-markdown -m < README.md > README.html
+mulle-testproto -m < README.md > README.html
 open README.html        # xdg-open README.html (linux)
 ```
 
-> There is also a convenience script `mulle-markdown-preview`, which opens a
+> There is also a convenience script `mulle-testproto-preview`, which opens a
 > README.md file in the brower.
 
 ## Usage
 
 ```console
-   mulle-markdown [options]
+   mulle-testproto [options]
 
    Reads markdown from stdin, writes HTML to stdout.
 
@@ -39,7 +39,7 @@ Options:
 ## Example
 
 ```console
-echo "# hello" | mulle-markdown -c
+echo "# hello" | mulle-testproto -c
 ```
 
 emits
@@ -57,13 +57,13 @@ emits
 
 > ### Note
 >
-> mulle-markdown does not pretty print the resulting HTML. You may want to
+> mulle-testproto does not pretty print the resulting HTML. You may want to
 > chain it with mulle-tidy for nicer output.
 
 
-## mulle-markdown as a musl or cosmopolitan static executable
+## mulle-testproto as a musl or cosmopolitan static executable
 
-`mulle-markdown` is a small showcase on how to compile mulle-objc with
+`mulle-testproto` is a small showcase on how to compile mulle-objc with
 [musl](//musl.libc.org) or [cosmopolitan](//justine.lol/cosmopolitan/index.html)
 into a standalone static/cross-platform executable. The craft for musl or
 cosmpolitan must be done on linux though.

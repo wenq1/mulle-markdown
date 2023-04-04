@@ -11,8 +11,8 @@
  *
  */
 
-#ifndef _mulle_markdown_include_private_h__
-#define _mulle_markdown_include_private_h__
+#ifndef _mulle_testproto_include_private_h__
+#define _mulle_testproto_include_private_h__
 
 /* no headers */
 

@@ -2,199 +2,83 @@
 
 #import "import-private.h"
 
-#include "mulle-markdown-version.h"
+#include "mulle-testproto-version.h"
 
 #include <stdio.h>
 
 
-// https://www.w3.org/TR/html-polyglot/
-// why not...
-
-static char   header1[] = \
-"<!DOCTYPE html>\n"
-"<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"\" xml:lang=\"\">\n"
-"<head>\n"
-"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n";
-
-static char   css[] = \
-"<link rel=\"stylesheet\" href=\"style.css\">\n";
-
-static char   header2[] = \
-"<title>%s</title>\n"
-"</head>\n"
-"<body>\n";
-
-static char   footer[] = \
-"</body>\n"
-"</html>\n";
-
-
-static char   default_css[] =
-#include "style.css.inc"
-;
-#define s_default_css  (sizeof( default_css) - 1)
-
-
-static void   usage( void)
-{
-   fprintf( stderr, "" \
-"Usage:\n"
-"   mulle-markdown [options]\n"
-"\n"
-"   Reads markdown from stdin, writes it to stdout.\n"
-"\n"
-"Options:\n"
-"   -c         : emit link to \"style.css\" (implies -w)\n"
-"   -i         : inline \"style.css\" into HTML head (implies -w)\n"
-"   -m         : inline a hardcoded style.css (implies -w)\n"
-"   -t <title> : set title of HTML document (implies -w)\n"
-"   -w         : wrap with HTML header and footer\n"
-);
-
-   exit( 1);
+@interface MulleBaseAnimal: NSObject {
 }
 
+- (NSString *) speak;
 
-int  main( int argc, char *argv[])
+@end
+
+@implementation MulleBaseAnimal
+
+- (NSString *) speak
 {
-   NSMutableData   *data;
-   NSData          *markdownedData;
-   auto char       buf[ 4096];
-   char            *p;
-   char            *sentinel;
-   int             c;
-   int             i;
-   FILE            *fq;
-   struct
-   {
-      int   add_header;
-      int   add_css;
-      int   add_footer;
-      int   inline_css;
-      int   default_css;
-      char  *title;
-   } config;
-
-   memset( &config, 0, sizeof( config));
-   config.title = "";
-
-   i = 1;
-   while( i < argc)
-   {
-      if( argv[ i][ 0] == '-')
-         switch( argv[ i][ 1])
-         {
-         case 'h' :
-            usage();
-            break;
-
-         case 'i' :
-            config.inline_css = YES;
-            config.add_header = YES;
-            config.add_footer = YES;
-            ++i;
-            continue;
-
-         case 'm' :
-            config.inline_css  = YES;
-            config.add_header  = YES;
-            config.add_footer  = YES;
-            config.default_css = YES;
-            ++i;
-            continue;
-
-         case 'w' :
-            config.add_header = YES;
-            config.add_footer = YES;
-            ++i;
-            continue;
-
-         case 't' :
-            if( ++i >= argc)
-               usage();
-
-            config.title      = argv[ i];
-            config.add_header = YES;
-            config.add_footer = YES;
-            ++i;
-            continue;
-
-         case 'c' :
-            config.add_header = YES;
-            config.add_footer = YES;
-            config.add_css    = YES;
-            ++i;
-            continue;
-         }
-
-      fprintf( stderr, "unknown argument \"%s\"\n", argv[ i]);
-      usage();
-   }
-
-   if( i != argc)
-   {
-      fprintf( stderr, "unknown argument \"%s\"\n", argv[ i]);
-      usage();
-   }
-
-   // as we don't want the dependency on MulleObjCOSFoundation we handcode
-   // the reader and writer
-
-   data = [NSMutableData data];
-
-   p        = buf;
-   sentinel = &buf[ sizeof( buf)];
-   for(;;)
-   {
-      c = getchar_unlocked();
-      if( c == EOF || p == sentinel)
-      {
-         [data appendBytes:buf
-                    length:p - buf];
-         if( c == EOF)
-            break;
-
-         p        = buf;
-         sentinel = &buf[ sizeof( buf)];
-      }
-      *p++ = c;
-   }
-
-   // TODO: make more nicey, nicey by injecting style data into header
-   //       not just lazily prepending it
-   markdownedData = [data hoedownedData];
-
-   if( config.add_header)
-      fwrite( header1, 1, sizeof( header1) - 1, stdout);
-   if( config.add_css)
-      fwrite( css, 1, sizeof( css) - 1, stdout);
-   else
-      if( config.inline_css)
-      {
-         fprintf( stdout, "<style>\n");
-
-         if( config.default_css)
-         {
-            fwrite( default_css, s_default_css, 1, stdout);
-         }
-         else
-         {
-            fq = fopen( "style.css", "r");
-            while( (c = getc_unlocked( fq)) != EOF)
-               putc_unlocked( c, stdout);
-            fclose( fq);
-         }
-
-         fprintf( stdout, "</style>\n");
-      }
-
-   if( config.add_header)
-      fprintf( stdout, header2, config.title);
-
-   fwrite( [markdownedData bytes], 1, [markdownedData length], stdout);
-
-   if( config.add_footer)
-      fwrite( footer, 1, sizeof( footer) - 1, stdout);
-
-   return( 0);
+        return @"I love beer";
 }
+
+@end
+
+@class MulleVersatilityProtocolClass;
+@protocol MulleVersatilityProtocolClass
+- (NSString *) perform;
+@end
+
+@implementation MulleVersatilityProtocolClass
+- (NSString *) perform {
+        return @"I can jump over the hoop";
+}
+@end
+
+
+
+
+@interface MulleBelgiumDog: MulleBaseAnimal {}
+- (NSString *) speak;
+@end
+
+@implementation MulleBelgiumDog
+
+- (NSString *) speak
+{
+        return @"J'aime Leffe";
+}
+
+@end
+
+
+
+
+
+@interface MulleGermanDog: MulleBaseAnimal<MulleVersatilityProtocolClass> {}
+- (NSString *) speak;
+@end
+
+@implementation MulleGermanDog
+
+- (NSString *) speak
+{
+        return @"Ich liebe Weissbier";
+}
+
+@end
+
+int main (int argc, char *argv[])
+{
+        MulleBaseAnimal       * baseAnimal      = [[MulleBaseAnimal alloc] init];
+        printf ("baseAnimal.1: %s\n", [[baseAnimal speak] UTF8String]);
+
+        MulleBelgiumDog       * belgiumDog      = [[MulleBelgiumDog alloc] init];
+        printf ("belgiumDog.1: %s\n", [[belgiumDog speak] UTF8String]);
+
+        MulleGermanDog        * germanDog       = [[MulleGermanDog alloc] init];
+        printf ("germanDog.1: %s\n", [[germanDog speak] UTF8String]);
+
+        printf ("germanDog.2: %s\n", [[germanDog perform] UTF8String]);
+
+        return 0;
+};

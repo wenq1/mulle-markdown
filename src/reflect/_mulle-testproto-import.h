@@ -24,8 +24,8 @@
 #import <MulleHoedown/MulleHoedown.h>   // MulleHoedown
 
 #ifdef __has_include
-# if __has_include( "_mulle-markdown-include.h")
-#  include "_mulle-markdown-include.h"
+# if __has_include( "_mulle-testproto-include.h")
+#  include "_mulle-testproto-include.h"
 # endif
 #endif
 

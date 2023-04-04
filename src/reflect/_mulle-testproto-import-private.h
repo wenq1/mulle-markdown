@@ -13,7 +13,7 @@
 /* no headers */
 
 #ifdef __has_include
-# if __has_include( "_mulle-markdown-include-private.h")
-#  include "_mulle-markdown-include-private.h"
+# if __has_include( "_mulle-testproto-include-private.h")
+#  include "_mulle-testproto-include-private.h"
 # endif
 #endif

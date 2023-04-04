@@ -1,14 +1,14 @@
 {
-   "name" : "mulle-markdown",
+   "name" : "mulle-testproto",
    "version" : "0.1.0",
-   "description" : "👯 mulle-markdown turns markdown into HTML",
-   "homepage" : "https://github.com/MulleWeb/mulle-markdown",
-   "bugs" : "https://github.com/MulleWeb/mulle-markdown/issues",
+   "description" : "👯 mulle-testproto turns markdown into HTML",
+   "homepage" : "https://github.com/MulleWeb/mulle-testproto",
+   "bugs" : "https://github.com/MulleWeb/mulle-testproto/issues",
    "keywords" : [],
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "github:MulleWeb/mulle-markdown"
+      "url" : "github:MulleWeb/mulle-testproto"
    },
    "dependencies" : {
       "mulle-cosmopolitan" : "git://github.com/mulle-cc/mulle-cosmopolitan",
